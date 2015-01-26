@@ -1,0 +1,41 @@
+label market:
+
+    #Forces the player to progress and not just gather goods
+    if goods_amount < 3:
+        show erika base
+        e2 "The canned goods should be fine...hopefully."
+        "Erika gains Food!"
+        $ goods_amount += 1
+    if weapon == "bow":
+        if d10roll >= 7:
+            "Erika found an AR-15!"
+            $ weapon = "AR-15"
+            jump area
+        else:
+            jump area
+    if weapon == "shovel":
+        if d10roll >= 4 < 7:
+            "Erika found a bow!"
+            $ weapon = "bow"
+        elif d10roll >= 7:
+            "Erika found a AR-15!"
+            $ weapon = "AR-15"
+        else:
+            jump area
+    if weapon == "AR-15":
+        jump area
+        e2 "I can use this..."
+    if d10roll >= 7:
+        "Erika found a AR-15!"
+        $ weapon = "AR-15"
+        jump area
+    elif d10roll >= 4 < 7:
+        "Erika found a bow!"
+        $ weapon = "bow"
+        jump area
+    elif d10roll < 4:
+        "Erika found a shovel!"
+        $ weapon = "shovel"
+        jump area
+    else:
+        jump area
