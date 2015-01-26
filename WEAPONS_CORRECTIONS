@@ -1,0 +1,43 @@
+    label market:
+
+    #Forces the player to progress and not just gather goods
+    if goods_amount < 3:
+        show erika base
+        e2 "The canned goods should be fine...hopefully."
+        "Erika gains Food!"
+        $ goods_amount += 1
+    #WEAPONS INITIATION POINT
+    if weapon == "AR-15":
+        jump area
+    if weapon == "bow":
+        if d10roll >= 7:
+            "Erika found an AR-15!"
+            $ weapon = "AR-15"
+            jump area
+        else:
+            jump area
+    #WILL ATTEMPT TO RANDOMIZE AND REPLACE WEAPON SHOVEL FOR HIGHER QUALITY WEAPON
+    if weapon == "shovel":
+        if d10roll >= 5:
+            "Erika found a bow!"
+            $ weapon = "bow"
+        elif d10roll >= 7:
+            "Erika found a AR-15!"
+            $ weapon = "AR-15"
+        else:
+            jump area
+    #IF NO WEAPON THIS WILL BE THE FIRST INSTANCE OF A RANDOM WEAPON ASSIGNMENT
+    if d10roll >= 7:
+        "Erika found a AR-15!"
+        $ weapon = "AR-15"
+        jump area
+    elif d10roll >= 4 < 7:
+        "Erika found a bow!"
+        $ weapon = "bow"
+        jump area
+    elif d10roll < 4:
+        "Erika found a shovel!"
+        $ weapon = "shovel"
+        jump area
+    else:
+        jump area
